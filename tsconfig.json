@@ -1,5 +1,9 @@
 {
    "compilerOptions": {
+      "baseUrl": "src",
+      "paths": {
+         "@entity/*": ["entity/*"]
+      },
       "lib": [
          "es5",
          "es6"
