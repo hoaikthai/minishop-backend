@@ -18,6 +18,11 @@ export class ProductsController {
     return await this.productsService.findById(id);
   }
 
+  @Get()
+  async getAvailableProductUUID(): Promise<string> {
+    return await this.productsService.getAvailableUUID();
+  }
+
   @Post()
   async create(createDto: CreateDto): Promise<Product> {
     return await this.productsService.create(createDto);

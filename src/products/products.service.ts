@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from 'uuid';
 import { Injectable } from '@nestjs/common';
 import { Product } from '@entity/Product';
 import { ProductsRepository } from './repositories/productsRepository';
@@ -18,6 +19,17 @@ export class ProductsService {
 
   async findById(id: number): Promise<Product> {
     return await this.productsRepository.findOne({ id });
+  }
+
+  async getAvailableUUID(): Promise<string> {
+    let count = 1;
+    let uuid: string;
+    while (count != 0) {
+      uuid = uuidv4();
+      count = await (await this.productsRepository.find({ where: { uuid } }))
+        .length;
+    }
+    return uuid;
   }
 
   async create(createDto: CreateDto): Promise<Product> {
