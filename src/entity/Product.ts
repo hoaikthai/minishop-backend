@@ -30,6 +30,9 @@ export class Product {
   })
   status: ProductStatus;
 
+  @Column()
+  uuid: string;
+
   @DeleteDateColumn()
   deletedAt?: Date;
 

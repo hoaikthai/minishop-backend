@@ -7,7 +7,7 @@ import {
 } from 'typeorm';
 import { Product } from './Product';
 
-@Entity()
+@Entity('product_media')
 export class ProductMedia {
   @PrimaryGeneratedColumn()
   id: number;
@@ -17,6 +17,9 @@ export class ProductMedia {
 
   @Column()
   productId: number;
+
+  @Column()
+  uuid: string;
 
   @DeleteDateColumn()
   deletedAt?: Date;
