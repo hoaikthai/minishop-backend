@@ -6,4 +6,7 @@ export class CreateDto {
 
   @IsNotEmpty()
   readonly description: string;
+
+  @IsNotEmpty()
+  readonly uuid: string;
 }

@@ -15,8 +15,8 @@ export class ProductMediaService {
     return await this.productMediaRepository.findOne({ productId, id });
   }
 
-  async create(productId: number, createDto: CreateDto): Promise<ProductMedia> {
-    return await this.productMediaRepository.create({ productId, ...createDto});
+  async create(createDto: CreateDto): Promise<ProductMedia> {
+    return await this.productMediaRepository.create(createDto);
   }
 
   async delete(id: number) {
