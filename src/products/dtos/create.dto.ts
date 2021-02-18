@@ -6,4 +6,6 @@ export class CreateDto {
 
   @IsNotEmpty()
   readonly description: string;
+
+  readonly media: string[];
 }

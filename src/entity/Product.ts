@@ -1,4 +1,11 @@
-import { Entity, PrimaryGeneratedColumn, Column, DeleteDateColumn } from 'typeorm';
+import { ProductMedia } from 'entity/ProductMedia';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  DeleteDateColumn,
+  OneToMany,
+} from 'typeorm';
 
 export enum ProductStatus {
   ACTIVE = 'active',
@@ -25,4 +32,7 @@ export class Product {
 
   @DeleteDateColumn()
   deletedAt?: Date;
+
+  @OneToMany(() => ProductMedia, (productMedia) => productMedia.product)
+  productMedia: ProductMedia[];
 }
