@@ -1,5 +1,5 @@
 import { ProductMedia } from '@entity/ProductMedia';
-import { Controller, Delete, Get, Param, Post, Query } from '@nestjs/common';
+import { Controller, Delete, Get, HttpCode, Param, Post, Query } from '@nestjs/common';
 import { CreateDto } from './dtos/create.dto';
 import { ProductMediaService } from './product-media.service';
 
@@ -14,10 +14,10 @@ export class ProductMediaController {
     return await this.productMediaService.findAll(productId);
   }
 
-  @Get()
+  @Get(':id')
   async findOne(
     @Query('productId') productId: number,
-    id: number,
+    @Param('id') id: number,
   ): Promise<ProductMedia> {
     return await this.productMediaService.findById(productId, id);
   }
@@ -29,10 +29,11 @@ export class ProductMediaController {
     return await this.productMediaService.create(createDto);
   }
 
-  @Delete()
+  @Delete(':id')
+  @HttpCode(204)
   async delete(
     @Query('productId') _productId: number,
-    id: number,
+    @Param('id') id: number,
   ): Promise<null> {
     await this.productMediaService.delete(id);
     return null;

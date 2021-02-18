@@ -41,8 +41,8 @@ export class ProductsService {
     return product;
   }
 
-  async update(updateDto: UpdateDto): Promise<Product> {
-    const product = await this.productsRepository.findOne({ id: updateDto.id });
+  async update(id: number, updateDto: UpdateDto): Promise<Product> {
+    const product = await this.productsRepository.findOne({ id });
     const toUpdate = Object.assign(product, updateDto);
     return await this.productsRepository.save(toUpdate);
   }
