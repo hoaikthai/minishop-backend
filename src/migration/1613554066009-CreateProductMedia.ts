@@ -15,6 +15,7 @@ export class CreateProductMedia1613554066009 implements MigrationInterface {
             name: 'id',
             type: 'int',
             isPrimary: true,
+            isGenerated: true
           },
           {
             name: 'url',

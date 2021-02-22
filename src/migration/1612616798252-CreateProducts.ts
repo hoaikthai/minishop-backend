@@ -13,6 +13,7 @@ export class CreateProducts1612616798252 implements MigrationInterface {
             name: 'id',
             type: 'int',
             isPrimary: true,
+            isGenerated: true
           },
           {
             name: 'name',
@@ -38,7 +39,8 @@ export class CreateProducts1612616798252 implements MigrationInterface {
           },
           {
             name: 'deleted_at',
-            type: 'timestamp'
+            type: 'timestamp',
+            isNullable: true
           },
         ],
       }),
