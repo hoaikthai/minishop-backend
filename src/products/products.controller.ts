@@ -1,5 +1,5 @@
-import { Controller, Delete, Get, HttpCode, Param, Post, Put } from '@nestjs/common';
-import { Product } from '../entity/Product';
+import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put } from '@nestjs/common';
+import { Product } from '@entity/product.entity';
 import { CreateDto } from './dtos/create.dto';
 import { UpdateDto } from './dtos/update.dto';
 import { ProductsService } from './products.service';
@@ -7,6 +7,11 @@ import { ProductsService } from './products.service';
 @Controller('products')
 export class ProductsController {
   constructor(private productsService: ProductsService) {}
+
+  @Get('availableUUID')
+  async getAvailableProductUUID(): Promise<string> {
+    return await this.productsService.getAvailableUUID();
+  }
 
   @Get()
   async findAll(): Promise<Product[]> {
@@ -18,13 +23,9 @@ export class ProductsController {
     return await this.productsService.findById(id);
   }
 
-  @Get('availableUUID')
-  async getAvailableProductUUID(): Promise<string> {
-    return await this.productsService.getAvailableUUID();
-  }
 
   @Post()
-  async create(createDto: CreateDto): Promise<Product> {
+  async create(@Body() createDto: CreateDto): Promise<Product> {
     return await this.productsService.create(createDto);
   }
 

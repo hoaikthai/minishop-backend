@@ -1,10 +1,10 @@
 import { v4 as uuidv4 } from 'uuid';
 import { Injectable } from '@nestjs/common';
-import { Product } from '@entity/Product';
-import { ProductsRepository } from './repositories/productsRepository';
+import { Product } from '@entity/product.entity';
+import { ProductsRepository } from './products.repository';
 import { CreateDto } from './dtos/create.dto';
 import { UpdateDto } from './dtos/update.dto';
-import { ProductMediaRepository } from './product-media/productMediaRepository';
+import { ProductMediaRepository } from './product-media/product-media.repository';
 
 @Injectable()
 export class ProductsService {
@@ -38,7 +38,7 @@ export class ProductsService {
       { uuid: product.uuid },
       { productId: product.id },
     );
-    return product;
+    return await this.productsRepository.save(createDto);
   }
 
   async update(id: number, updateDto: UpdateDto): Promise<Product> {

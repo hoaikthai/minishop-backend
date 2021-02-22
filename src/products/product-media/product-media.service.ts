@@ -1,7 +1,7 @@
-import { ProductMedia } from '@entity/ProductMedia';
 import { Injectable } from '@nestjs/common';
+import { ProductMedia } from '@entity/product-media.entity';
 import { CreateDto } from './dtos/create.dto';
-import { ProductMediaRepository } from './productMediaRepository';
+import { ProductMediaRepository } from './product-media.repository';
 
 @Injectable()
 export class ProductMediaService {
@@ -16,7 +16,8 @@ export class ProductMediaService {
   }
 
   async create(createDto: CreateDto): Promise<ProductMedia> {
-    return await this.productMediaRepository.create(createDto);
+    const productMedia = await this.productMediaRepository.create(createDto);
+    return await this.productMediaRepository.save(productMedia);
   }
 
   async delete(id: number) {

@@ -1,5 +1,5 @@
-import { ProductMedia } from '@entity/ProductMedia';
-import { Controller, Delete, Get, HttpCode, Param, Post, Query } from '@nestjs/common';
+import { ProductMedia } from '@entity/product-media.entity';
+import { Body, Controller, Delete, Get, HttpCode, Param, Post, Query } from '@nestjs/common';
 import { CreateDto } from './dtos/create.dto';
 import { ProductMediaService } from './product-media.service';
 
@@ -24,7 +24,7 @@ export class ProductMediaController {
 
   @Post()
   async create(
-    createDto: CreateDto,
+    @Body() createDto: CreateDto,
   ): Promise<ProductMedia> {
     return await this.productMediaService.create(createDto);
   }
