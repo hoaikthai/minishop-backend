@@ -6,19 +6,19 @@
    "password": "123",
    "database": "minishop_dev",
    "synchronize": false,
-   "logging": false,
+   "logging": "all",
    "entities": [
-      "entity/*.ts"
+      "dist/entity/*.entity.js"
    ],
    "migrations": [
-      "src/migration/**/*.ts"
+      "migration/*.ts"
    ],
    "subscribers": [
       "src/subscriber/**/*.ts"
    ],
    "cli": {
-      "entitiesDir": "src/entity",
-      "migrationsDir": "src/migration",
-      "subscribersDir": "src/subscriber"
+      "entitiesDir": "entity",
+      "migrationsDir": "migration",
+      "subscribersDir": "subscriber"
    }
 }
