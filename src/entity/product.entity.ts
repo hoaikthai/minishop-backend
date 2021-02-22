@@ -1,4 +1,4 @@
-import { ProductMedia } from 'entity/ProductMedia';
+import { ProductMedia } from './product-media.entity';
 import {
   Entity,
   PrimaryGeneratedColumn,
@@ -12,7 +12,7 @@ export enum ProductStatus {
   INACTIVE = 'inactive',
 }
 
-@Entity()
+@Entity('products')
 export class Product {
   @PrimaryGeneratedColumn()
   id: number;
@@ -33,7 +33,7 @@ export class Product {
   @Column()
   uuid: string;
 
-  @DeleteDateColumn()
+  @DeleteDateColumn({ name: 'deleted_at' })
   deletedAt?: Date;
 
   @OneToMany(() => ProductMedia, (productMedia) => productMedia.product)

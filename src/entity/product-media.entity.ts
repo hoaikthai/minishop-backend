@@ -5,7 +5,7 @@ import {
   DeleteDateColumn,
   ManyToOne,
 } from 'typeorm';
-import { Product } from './Product';
+import { Product } from './product.entity';
 
 @Entity('product_media')
 export class ProductMedia {
@@ -15,7 +15,7 @@ export class ProductMedia {
   @Column()
   url: string;
 
-  @Column()
+  @Column({ name: 'product_id' })
   productId: number;
 
   @Column()

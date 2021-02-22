@@ -1,6 +1,5 @@
 import { EntityRepository, Repository } from 'typeorm';
-import { Product } from '@entity/Product';
-import { ProductMedia } from '@entity/ProductMedia';
+import { ProductMedia } from '@entity/product-media.entity';
 
-@EntityRepository(Product)
+@EntityRepository(ProductMedia)
 export class ProductMediaRepository extends Repository<ProductMedia> {}
