@@ -10,9 +10,6 @@
     "sourceMap": true,
     "outDir": "./dist",
     "baseUrl": "./",
-    "paths": {
-      "@entity/*": ["src/entity/*"]
-   },
     "incremental": true
   }
 }

@@ -1,10 +1,10 @@
 import { v4 as uuidv4 } from 'uuid';
 import { Injectable } from '@nestjs/common';
-import { Product } from '@entity/product.entity';
 import { ProductsRepository } from './products.repository';
 import { CreateDto } from './dtos/create.dto';
 import { UpdateDto } from './dtos/update.dto';
 import { ProductMediaRepository } from './product-media/product-media.repository';
+import { Product } from './entities/product.entity';
 
 @Injectable()
 export class ProductsService {

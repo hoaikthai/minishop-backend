@@ -1,7 +1,16 @@
-import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put } from '@nestjs/common';
-import { Product } from '@entity/product.entity';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  HttpCode,
+  Param,
+  Post,
+  Put,
+} from '@nestjs/common';
 import { CreateDto } from './dtos/create.dto';
 import { UpdateDto } from './dtos/update.dto';
+import { Product } from './entities/product.entity';
 import { ProductsService } from './products.service';
 
 @Controller('products')
@@ -23,14 +32,16 @@ export class ProductsController {
     return await this.productsService.findById(id);
   }
 
-
   @Post()
   async create(@Body() createDto: CreateDto): Promise<Product> {
     return await this.productsService.create(createDto);
   }
 
   @Put(':id')
-  async update(@Param('id') id: number, updateDto: UpdateDto): Promise<Product> {
+  async update(
+    @Param('id') id: number,
+    updateDto: UpdateDto,
+  ): Promise<Product> {
     return await this.productsService.update(id, updateDto);
   }
 

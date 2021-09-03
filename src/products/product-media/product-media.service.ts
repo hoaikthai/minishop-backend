@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { ProductMedia } from '@entity/product-media.entity';
+import { ProductMedia } from '../entities/product-media.entity';
 import { CreateDto } from './dtos/create.dto';
 import { ProductMediaRepository } from './product-media.repository';
 
